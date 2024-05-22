@@ -13,10 +13,7 @@ This project is a weather application built with Next.js and TypeScript. It allo
   - [Running the Application](#running-the-application)
   - [Storybook](#storybook)
   - [Testing](#testing)
-  - [Folder Structure](#folder-structure)
   - [Environment Variables](#environment-variables)
-  - [Contributing](#contributing)
-  - [License](#license)
 
 ## Features
 
