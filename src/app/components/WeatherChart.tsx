@@ -1,7 +1,7 @@
 import React from "react";
 import CustomLineChart from "./CustomLineChart";
-import { useTemperature } from "../context/TemperatureContext";
-import { convertTemperature } from "../utils/functions";
+import { useTemperature } from "@/app/context/TemperatureContext";
+import { convertTemperature } from "@/app/utils/functions";
 
 interface ChartData {
   time: string;

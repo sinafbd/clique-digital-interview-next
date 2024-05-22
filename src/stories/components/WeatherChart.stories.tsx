@@ -1,7 +1,7 @@
 import React from "react";
 import { Meta, StoryObj } from "@storybook/react";
-import WeatherChart from "../../app/components/WeatherChart";
-import { TemperatureProvider } from "../../app/context/TemperatureContext";
+import WeatherChart from "@/app/components/WeatherChart";
+import { TemperatureProvider } from "@/app/context/TemperatureContext";
 
 export default {
   title: "Components/WeatherChart",

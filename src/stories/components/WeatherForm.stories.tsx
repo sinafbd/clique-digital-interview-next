@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import WeatherForm from "../../app/components/WeatherForm";
+import WeatherForm from "@/app/components/WeatherForm";
 
 export default {
   title: "Components/WeatherForm",

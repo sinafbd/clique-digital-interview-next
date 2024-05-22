@@ -1,6 +1,6 @@
 import Image from "next/image";
-import { useTemperature } from "../context/TemperatureContext";
-import { convertTemperature } from "../utils/functions";
+import { useTemperature } from "@/app/context/TemperatureContext";
+import { convertTemperature } from "@/app/utils/functions";
 
 interface ForecastDay {
   date: string;

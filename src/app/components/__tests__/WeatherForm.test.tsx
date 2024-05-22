@@ -1,7 +1,7 @@
 import React from "react";
 import { render, fireEvent, screen, waitFor } from "@testing-library/react";
-import WeatherForm from "../../components/WeatherForm";
-import { getCitySuggestions } from "../../utils/api";
+import WeatherForm from "@/app/components/WeatherForm";
+import { getCitySuggestions } from "@/app/utils/api";
 
 // Debugging: log to ensure the mock is correctly set up
 console.log("Mocking getCitySuggestions:", getCitySuggestions);

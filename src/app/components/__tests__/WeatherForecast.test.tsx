@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import WeatherForecast from "../../components/WeatherForecast";
-import { TemperatureProvider } from "../../context/TemperatureContext";
+import WeatherForecast from "@/app/components/WeatherForecast";
+import { TemperatureProvider } from "@/app/context/TemperatureContext";
 
 const forecast = [
   {

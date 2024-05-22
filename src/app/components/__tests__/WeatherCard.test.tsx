@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import WeatherCard from "../WeatherCard";
-import { TemperatureProvider } from "../../context/TemperatureContext";
+import { TemperatureProvider } from "@/app/context/TemperatureContext";
 
 describe("WeatherCard", () => {
   it.only("renders weather information correctly", () => {

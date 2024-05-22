@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { getCitySuggestions } from "../utils/api";
+import { getCitySuggestions } from "@/app/utils/api";
 
 interface WeatherFormProps {
   onSearch: (city: string) => void;
