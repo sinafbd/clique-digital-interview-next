@@ -48,3 +48,11 @@ cd nextjs-weather-app
 2. rename the `.env.example` to `.env.local`
 
 3. `yarn dev`
+
+## Storybook
+
+`yarn storybook`
+
+## Testing
+
+`yarn test`
