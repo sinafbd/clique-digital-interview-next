@@ -56,3 +56,15 @@ cd nextjs-weather-app
 ## Testing
 
 `yarn test`
+
+## Storybook
+
+yarn storybook
+
+## Testing
+
+yarn test
+
+## environment-variables
+
+NEXT_PUBLIC_ACCUWEATHER_API_KEY=YOUR_ACCUWEATHER_API_KEY (or rename the `.env.example` to `.env.local`)
