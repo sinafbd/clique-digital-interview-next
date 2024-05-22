@@ -1,39 +1,49 @@
 import React from "react";
-import { render } from "@testing-library/react";
-import WeatherForecast from "../WeatherForecast";
+import { render, screen } from "@testing-library/react";
+import WeatherForecast from "../../components/WeatherForecast";
 import { TemperatureProvider } from "../../context/TemperatureContext";
 
-const mockForecast = [
+const forecast = [
   {
-    date: "2024-05-20T07:00:00+01:00",
+    date: "2023-05-20",
     minTemperature: 10,
     maxTemperature: 20,
-    description: "Sunny",
-    icon: 1,
+    description: "Cloudy",
+    icon: 6,
   },
   {
-    date: "2024-05-21T07:00:00+01:00",
+    date: "2023-05-21",
     minTemperature: 12,
     maxTemperature: 22,
-    description: "Partly cloudy",
-    icon: 2,
+    description: "Partly Cloudy",
+    icon: 7,
   },
 ];
 
 describe("WeatherForecast", () => {
-  const renderWithProvider = (ui: React.ReactElement) => {
-    return render(<TemperatureProvider>{ui}</TemperatureProvider>);
-  };
-
-  it("should render forecast correctly", () => {
-    const { getByText, getAllByAltText } = renderWithProvider(
-      <WeatherForecast forecast={mockForecast} />
+  it("renders forecast correctly", async () => {
+    render(
+      <TemperatureProvider>
+        <WeatherForecast forecast={forecast} />
+      </TemperatureProvider>
     );
-    expect(getByText("MON 20")).toBeInTheDocument();
-    expect(getByText("TUE 21")).toBeInTheDocument();
-    expect(getAllByAltText("Sunny")).toHaveLength(1);
-    expect(getAllByAltText("Partly cloudy")).toHaveLength(1);
-    expect(getByText("20°")).toBeInTheDocument();
-    expect(getByText("10°")).toBeInTheDocument();
+
+    expect(await screen.findByText("SAT 20")).toBeInTheDocument();
+    expect(await screen.findByText("SUN 21")).toBeInTheDocument();
+    expect(await screen.findByText("Cloudy")).toBeInTheDocument();
+    expect(await screen.findByText("Partly Cloudy")).toBeInTheDocument();
+  });
+
+  it("displays temperatures in correct units", async () => {
+    render(
+      <TemperatureProvider>
+        <WeatherForecast forecast={forecast} />
+      </TemperatureProvider>
+    );
+
+    expect(await screen.findByText(/20°/)).toBeInTheDocument();
+    expect(await screen.findByText(/10°/)).toBeInTheDocument();
+    expect(await screen.findByText(/22°/)).toBeInTheDocument();
+    expect(await screen.findByText(/12°/)).toBeInTheDocument();
   });
 });
