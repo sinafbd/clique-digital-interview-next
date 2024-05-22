@@ -1,6 +1,16 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
+# Check branch name
+local_branch_name="$(git rev-parse --abbrev-ref HEAD)"
+message="Your branch name is not following our standard. Branch names in this project must adhere to this contract: (feature|release|fix)/PBI-123-other. Your commit will be rejected. You should rename your branch to a valid name and try again."
+if [[ ! "$local_branch_name" =~ ^(main|dev|master|(feature|build|feat|chore|release|fix|refactor|(bug|hot)fix)(\/((PBI|pbi)-){0,1}[0-9]+([-_][a-zA-Z0-9]+)*){1,2})?$ ]]; then
+
+ echo "$message"
+ exit 1
+fi
+exit 0
+
 yarn lint
 
 
