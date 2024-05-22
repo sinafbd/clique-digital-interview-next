@@ -32,7 +32,7 @@ This project is a weather application built with Next.js and TypeScript. It allo
 
 Before you begin, ensure you have the following installed on your machine:
 
-- An AccuWeather API key: rename the `.env.example` to `.env.local`
+- An AccuWeather API key
 - Node.js (>= 14.0.0)
 - npm (>= 6.0.0) or yarn (>= 1.22.18)
 
@@ -44,3 +44,7 @@ Before you begin, ensure you have the following installed on your machine:
 git clone https://github.com/sinafbd/clique-digital-interview-next
 cd nextjs-weather-app
 ```
+
+2. rename the `.env.example` to `.env.local`
+
+3. `yarn dev`
