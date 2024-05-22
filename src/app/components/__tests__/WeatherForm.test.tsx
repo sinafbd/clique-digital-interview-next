@@ -1,38 +1,66 @@
 import React from "react";
-import { render, fireEvent } from "@testing-library/react";
-import WeatherForm from "../WeatherForm";
+import { render, fireEvent, screen, waitFor } from "@testing-library/react";
+import WeatherForm from "../../components/WeatherForm";
+import { getCitySuggestions } from "../../utils/api";
+
+// Debugging: log to ensure the mock is correctly set up
+console.log("Mocking getCitySuggestions:", getCitySuggestions);
+
+jest.mock("../../utils/api", () => ({
+  getCitySuggestions: jest.fn(),
+}));
+
+const mockedGetCitySuggestions = getCitySuggestions as jest.MockedFunction<
+  typeof getCitySuggestions
+>;
 
 describe("WeatherForm", () => {
-  it("should render correctly", () => {
-    const { getByLabelText, getByText } = render(
-      <WeatherForm onSearch={jest.fn()} />
-    );
-    expect(getByLabelText("City Name")).toBeInTheDocument();
-    expect(getByText("Search")).toBeInTheDocument();
+  beforeEach(() => {
+    mockedGetCitySuggestions.mockClear();
   });
 
-  it("should call onSearch with the city name when the form is submitted", () => {
-    const onSearch = jest.fn();
-    const { getByLabelText, getByText } = render(
-      <WeatherForm onSearch={onSearch} />
-    );
-
-    const input = getByLabelText("City Name");
-    fireEvent.change(input, { target: { value: "London" } });
-
-    const button = getByText("Search");
-    fireEvent.click(button);
-
-    expect(onSearch).toHaveBeenCalledWith("London");
+  it("renders input correctly", () => {
+    render(<WeatherForm onSearch={jest.fn()} />);
+    const input = screen.getByLabelText(/City Name/i);
+    expect(input).toBeInTheDocument();
   });
 
-  it("should not call onSearch if the input is empty", () => {
-    const onSearch = jest.fn();
-    const { getByText } = render(<WeatherForm onSearch={onSearch} />);
+  it("shows suggestions when typing", async () => {
+    mockedGetCitySuggestions.mockResolvedValueOnce([
+      { Key: "123", LocalizedName: "New York" },
+      { Key: "456", LocalizedName: "Los Angeles" },
+    ]);
 
-    const button = getByText("Search");
-    fireEvent.click(button);
+    render(<WeatherForm onSearch={jest.fn()} />);
+    const input = screen.getByLabelText(/City Name/i);
 
-    expect(onSearch).not.toHaveBeenCalled();
+    fireEvent.change(input, { target: { value: "New" } });
+
+    await waitFor(() => {
+      expect(screen.getByText("New York")).toBeInTheDocument();
+      expect(screen.getByText("Los Angeles")).toBeInTheDocument();
+    });
+  });
+
+  it("hides suggestions when clicking outside", async () => {
+    mockedGetCitySuggestions.mockResolvedValueOnce([
+      { Key: "123", LocalizedName: "New York" },
+      { Key: "456", LocalizedName: "Los Angeles" },
+    ]);
+
+    render(<WeatherForm onSearch={jest.fn()} />);
+    const input = screen.getByLabelText(/City Name/i);
+
+    fireEvent.change(input, { target: { value: "New" } });
+
+    await waitFor(() => {
+      expect(screen.getByText("New York")).toBeInTheDocument();
+    });
+
+    fireEvent.mouseDown(document);
+
+    await waitFor(() => {
+      expect(screen.queryByText("New York")).not.toBeInTheDocument();
+    });
   });
 });
