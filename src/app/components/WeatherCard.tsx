@@ -3,7 +3,7 @@ import { convertTemperature } from "../utils/functions";
 
 interface WeatherCardProps {
   location: string;
-  temperature: number; // assuming this is in Celsius by default
+  temperature: number;
   description: string;
 }
 
