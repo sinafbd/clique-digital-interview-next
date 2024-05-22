@@ -7,7 +7,7 @@ interface ForecastDay {
   minTemperature: number;
   maxTemperature: number;
   description: string;
-  icon: number; // assuming the icon is a code to be used with an icon set
+  icon: number;
 }
 
 interface WeatherForecastProps {
