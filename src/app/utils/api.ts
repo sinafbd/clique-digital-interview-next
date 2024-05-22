@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_KEY = "S3feNNCWpT71RRRcbriNuL4EQoTPTc0f";
+const API_KEY = process.env.NEXT_PUBLIC_ACCUWEATHER_API_KEY;
 const BASE_URL = "http://dataservice.accuweather.com";
 
 interface WeatherResponse {

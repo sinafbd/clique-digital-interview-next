@@ -38,7 +38,7 @@ export default function Home() {
       setLoading(false);
     }
   };
-
+  console.log(process.env.NEXT_PUBLIC_ACCUWEATHER_API_KEY);
   return (
     <div className="mx-auto">
       <section>
