@@ -69,7 +69,7 @@ export default function WeatherForm({ onSearch }: WeatherFormProps) {
             type="text"
             value={inputText}
             onChange={(e) => setInputText(e.target.value)}
-            className="border p-2 bg-secondaryBg text-white outline-none rounded-sm"
+            className="p-2 bg-secondaryBg text-white outline-none rounded-sm"
             autoComplete="off"
             onBlur={() => setTimeout(() => setShowSuggestions(false), 100)}
             onFocus={() => inputText.length > 2 && setShowSuggestions(true)}
