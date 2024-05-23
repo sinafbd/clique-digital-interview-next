@@ -60,3 +60,4 @@ cd nextjs-weather-app
 ## environment-variables
 
 NEXT_PUBLIC_ACCUWEATHER_API_KEY=YOUR_ACCUWEATHER_API_KEY (or rename the `.env.example` to `.env.local`)
+NEXT_PUBLIC_ACCUWEATHER_BASE_URL=http://dataservice.accuweather.com
