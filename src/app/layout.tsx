@@ -1,6 +1,6 @@
-import "@/app/styles/globals.css";
+import "../styles/globals.css";
 import { ReactNode } from "react";
-import { TemperatureProvider } from "@/app/context/TemperatureContext";
+import { TemperatureProvider } from "./context/TemperatureContext";
 
 export default function RootLayout({
   children,
