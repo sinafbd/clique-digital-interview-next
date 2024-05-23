@@ -42,7 +42,7 @@ Before you begin, ensure you have the following installed on your machine:
 
 ```bash
 git clone https://github.com/sinafbd/clique-digital-interview-next
-cd nextjs-weather-app
+cd clique-digital-interview-next
 ```
 
 2. rename the `.env.example` to `.env.local`
